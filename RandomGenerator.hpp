@@ -582,7 +582,7 @@ class PCG64DXSM{
     __uint128_t x;
     uint64_t c;
 
-	static constexpr __uint128 mul = 0xda942042e4dd58b5ULL;
+	static constexpr __uint128 mul = 0xff37f1f758180525ULL;
 
     friend class Factory;
 
