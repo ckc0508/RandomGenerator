@@ -330,15 +330,15 @@ private:
         mixStafford13(seed),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
-        mixStafford13(seed + GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
-        mixStafford13(seed + GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
-        mixStafford13(seed + GOLDEN_RATIO_64),
+        mixStafford13(seed += GOLDEN_RATIO_64),
+        mixStafford13(seed += GOLDEN_RATIO_64),
+        mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
         mixStafford13(seed += GOLDEN_RATIO_64),
@@ -418,7 +418,7 @@ private:
         if ((x0 | x1) == 0){
             uint32_t v = s + GOLDEN_RATIO_32;
             this->x0 = mixMurmur32(v);
-            this->x1 = mixMurmur32(v + GOLDEN_RATIO_64);
+            this->x1 = mixMurmur32(v + GOLDEN_RATIO_32);
         }
     }
 
