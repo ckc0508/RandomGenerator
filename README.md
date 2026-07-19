@@ -11,7 +11,7 @@ auto rng3 = RandomGenerator::Factory::set_rng(sfc64, seed); //choose generator
 
 # Benchmark
 
-PS C:\Users\user\Desktop\EA_random> g++ -O3 -fno-move-loop-invariants -fno-unroll-loops main.cpp -o main
+**PS C:\Users\user\Desktop\EA_random> g++ -O3 -fno-move-loop-invariants -fno-unroll-loops main.cpp -o main
 PS C:\Users\user\Desktop\EA_random> ./main.exe
 ==================== RNG Fixed Count Benchmark (100M) ====================
 L64X128MixRandom     | Time:   383.93 ms | Speed:      260461976 num/s | Throughput:    2.084 GB/s
@@ -60,5 +60,5 @@ SplitMix32           | Time:   198.11 ms | Speed:      504776956 num/s | Through
 SplitMix64           | Time:   195.63 ms | Speed:      511159637 num/s | Throughput:    4.089 GB/s
 PCG64DXSM            | Time:   364.47 ms | Speed:      274373639 num/s | Throughput:    2.195 GB/s
 PCG64DXSphi          | Time:   383.71 ms | Speed:      260615997 num/s | Throughput:    2.085 GB/s
-===========================================================================
+===========================================================================**
 
