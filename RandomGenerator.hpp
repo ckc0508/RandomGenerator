@@ -14,8 +14,6 @@ struct l64x1024m_t {};
 struct l32x64m_t {};
 struct xoroshiro128_t {};
 struct xoshiro256_t {};
-struct splitmix32_t {};
-struct splitmix64_t {};
 struct pcg64dxsm_t {};
 struct pcg64dxsphi_t {};
 
@@ -27,8 +25,6 @@ inline constexpr l64x1024m_t l64x1024m{};
 inline constexpr l32x64m_t l32x64m{};
 inline constexpr xoroshiro128_t xoroshiro128plusplus{};
 inline constexpr xoshiro256_t xoshiro256plusplus{};
-inline constexpr splitmix32_t splitmix32{};
-inline constexpr splitmix64_t splitmix64{};
 inline constexpr pcg64dxsm_t pcg64dxsm{};
 inline constexpr pcg64dxsphi_t pcg64dxsPhi{};
 
@@ -112,52 +108,6 @@ private:
 public:
 
 class Factory;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class SplitMix64 {
-    uint64_t seed;
-    friend class Factory;
-
-    explicit SplitMix64 (uint64_t seed) : seed(seed){}
-
-    inline uint64_t next(){
-        seed += GOLDEN_RATIO_64;
-        return mixStafford13(seed);
-    }
-
-public:
-    using result_type = uint64_t;
-    static constexpr uint64_t min() { return 0; }
-    static constexpr uint64_t max() { return UINT64_MAX; }
-    static constexpr const char* id = "SplitMix64";
-
-    inline result_type operator()(){
-        return next();
-    }
-};
-
-class SplitMix32 {
-    uint32_t seed;
-    friend class Factory;
-
-    explicit SplitMix32 (uint32_t seed) : seed(seed){}
-
-    inline uint32_t next(){
-        seed += GOLDEN_RATIO_32;
-        return mixMurmur32(seed);
-    }
-
-public:
-    using result_type = uint32_t;
-    static constexpr uint32_t min() { return 0; }
-    static constexpr uint32_t max() { return UINT32_MAX; }
-    static constexpr const char* id = "SplitMix32";
-
-    inline result_type operator()(){
-        return next();
-    }
-};
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -763,14 +713,6 @@ public:
 
     static auto set_rng(xoshiro256_t, uint64_t seed = rd()) {
         return Xoshiro256plusplus(seed);
-    }
-
-    static auto set_rng(splitmix32_t, uint64_t seed = rd()) {
-        return SplitMix32(seed);
-    }
-
-    static auto set_rng(splitmix64_t, uint64_t seed = rd()) {
-        return SplitMix64(seed);
     }
 
     static auto set_rng(pcg64dxsm_t, uint64_t seed = rd()) {
