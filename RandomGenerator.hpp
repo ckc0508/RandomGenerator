@@ -582,6 +582,8 @@ class PCG64DXSM{
     __uint128_t x;
     uint64_t c;
 
+	static constexpr mul = 0xda942042e4dd58b5ULL;
+
     friend class Factory;
 
     static inline uint64_t mixDXSM(__uint128_t seed){
@@ -589,7 +591,7 @@ class PCG64DXSM{
         uint64_t lo = (uint64_t)(seed | 1);
 
         hi ^= (hi >> 32);
-        hi *= 0xda942042e4dd58b5ULL;
+        hi *= mul;
         hi ^= (hi >> 48);
         hi *= lo;
         return hi;
@@ -606,7 +608,7 @@ class PCG64DXSM{
     inline uint64_t next(){
         __uint128_t z = x;
         //update lcg state
-        x = x * ((((__uint128_t) 0x2360ed051fc65da4ULL) << 64) | 0x4385df649fccf645ULL) + c;
+        x = x * mul + c;
         return mixDXSM(z);
     } 
 
