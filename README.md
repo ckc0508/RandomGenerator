@@ -19,3 +19,5 @@ for (int i = 0; i < 20; ++i){
 }
 
 //can use with C++ distribution
+
+if u dont pass parameter seed to the generator, std::random_device will auto generate a random number as a seed
