@@ -56,8 +56,6 @@ int main() {
         RandomGenerator::Factory::set_rng(xoshiro256plusplus, DEFAULT_SEED),
         RandomGenerator::Factory::set_rng(sfc64, DEFAULT_SEED),
         RandomGenerator::Factory::set_rng(sfc32, DEFAULT_SEED),
-        RandomGenerator::Factory::set_rng(splitmix32, DEFAULT_SEED),
-        RandomGenerator::Factory::set_rng(splitmix64, DEFAULT_SEED),
         RandomGenerator::Factory::set_rng(pcg64dxsm, DEFAULT_SEED),
         RandomGenerator::Factory::set_rng(pcg64dxsPhi, DEFAULT_SEED)
     );
